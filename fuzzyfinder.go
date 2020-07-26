@@ -15,7 +15,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/ktr0731/go-fuzzyfinder/matching"
+	"github.com/falzm/go-fuzzyfinder/matching"
 	runewidth "github.com/mattn/go-runewidth"
 	"github.com/nsf/termbox-go"
 	"github.com/pkg/errors"
@@ -82,6 +82,11 @@ func (f *finder) initFinder(items []string, matched []matching.Matched, opt opt)
 
 	if opt.multi {
 		f.state.selection = map[int]int{}
+		if opt.selected != nil {
+			for pos, idx := range opt.selected {
+				f.state.selection[idx] = pos
+			}
+		}
 	}
 
 	f.state.items = items
@@ -157,7 +162,7 @@ func (f *finder) _draw() {
 
 		if f.opt.multi {
 			if _, ok := f.state.selection[m.Idx]; ok {
-				f.term.setCell(1, height-3-i, '>', termbox.ColorRed, termbox.ColorBlack)
+				f.term.setCell(1, height-3-i, '*', termbox.ColorGreen|termbox.AttrBold, termbox.ColorDefault)
 			}
 		}
 
@@ -581,7 +586,7 @@ func (f *finder) find(slice interface{}, itemFunc func(i int) string, opts []Opt
 			defer f.stateMu.RUnlock()
 
 			if len(f.state.matched) == 0 {
-				return nil, ErrAbort
+				return nil, nil
 			}
 			if f.opt.multi {
 				if len(f.state.selection) == 0 {

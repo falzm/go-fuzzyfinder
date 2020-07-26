@@ -12,7 +12,7 @@ import (
 	"testing"
 
 	fuzz "github.com/google/gofuzz"
-	fuzzyfinder "github.com/ktr0731/go-fuzzyfinder"
+	fuzzyfinder "github.com/falzm/go-fuzzyfinder"
 	"github.com/nsf/termbox-go"
 )
 

@@ -9,8 +9,8 @@ generate:
 
 .PHONY: dept
 dept:
-	@go get github.com/ktr0731/dept@v0.1.2
-	@go build -o _tools/dept github.com/ktr0731/dept
+	@go get github.com/falzm/dept@v0.1.2
+	@go build -o _tools/dept github.com/falzm/dept
 
 .PHONY: tools
 tools: dept

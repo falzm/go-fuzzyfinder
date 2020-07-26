@@ -1,4 +1,4 @@
-module github.com/ktr0731/go-fuzzyfinder
+module github.com/falzm/go-fuzzyfinder
 
 require (
 	github.com/google/go-cmp v0.5.0

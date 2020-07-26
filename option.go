@@ -6,6 +6,7 @@ type opt struct {
 	multi        bool
 	hotReload    bool
 	promptString string
+	selected     []int
 }
 
 type mode int
@@ -61,6 +62,13 @@ func WithHotReload() Option {
 func WithPromptString(s string) Option {
 	return func(o *opt) {
 		o.promptString = s
+	}
+}
+
+// WithSelected marks the specified entry indices as selected at start.
+func WithSelected(indices []int) Option {
+	return func(o *opt) {
+		o.selected = indices
 	}
 }
 

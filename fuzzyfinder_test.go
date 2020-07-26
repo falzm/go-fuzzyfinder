@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	fuzzyfinder "github.com/ktr0731/go-fuzzyfinder"
+	fuzzyfinder "github.com/falzm/go-fuzzyfinder"
 	"github.com/nsf/termbox-go"
 )
 
